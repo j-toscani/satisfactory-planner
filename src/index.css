@@ -16,6 +16,12 @@ html {
   box-sizing: inherit;
 }
 
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column;
+}
+
 body {
   margin: 0;
 }
