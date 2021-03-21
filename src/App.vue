@@ -1,8 +1,12 @@
 <template>
   <div class="page">
     <header>
-      <nav></nav>
+      <nav>
+        <router-link to="/"> Home </router-link>
+        <router-link to="/render"> Render Test </router-link>
+      </nav>
     </header>
+    <router-view></router-view>
     <footer>
       <h2>Footer!</h2>
     </footer>
