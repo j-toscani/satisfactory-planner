@@ -1,35 +1,43 @@
 <template>
   <main class="container">
     <h1>Render Test</h1>
-    <div class="outer-parent">
-      <grid />
-    </div>
+    <children />
+    <button @click="addRow">Add Row</button>
   </main>
 </template>
 
 <script lang="ts">
-import { h, reactive, RendererElement, RendererNode, VNode } from 'vue';
+import { ref, Ref, h } from 'vue';
 
 export default {
   name: 'RenderTest',
-
   setup() {
-    const state = reactive({
-      count: 0,
-    });
-    const grid = createNewSection([subGridElement(3), subGridElement(2)]);
+    const row = {
+      text: 'I am a Row',
+      children: [1, 2, 3],
+    };
+    const rows: Ref<any> = ref([{ text: 'Ole Ole', children: [row, row, row] }]);
 
-    function createNewSection(children: VNode<any>[]) {
-      return h('div', { class: 'parent' }, children);
+    function addRow() {
+      rows.value.push({ ...rows.value[rows.value.length - 1] });
     }
 
-    function subGridElement(elements: number) {
-      const elementsArray = Array.from(new Array(elements), (_e, i) => h('div', { class: 'child' }));
-      return createNewSection(elementsArray);
+    function renderGrid(element: any, children: any) {
+      if (children) {
+        return h(
+          'div',
+          { class: 'row' },
+          children.map((element: any) => renderGrid(element, element.children)),
+        );
+      }
+      return h('span', { class: 'child' }, element.text ?? 'me');
     }
 
     return {
-      grid,
+      rows,
+      addRow,
+      children: () =>
+        h('div', { class: ['outer-parent'] }, ...rows.value.map((row: any) => renderGrid(row, row.children))),
     };
   },
 };
@@ -41,6 +49,13 @@ export default {
   margin: 5px;
   height: 1rem;
   width: 1rem;
+}
+
+.row {
+  border: 1px solid green;
+  display: flex;
+  height: 2rem;
+  width: 100%;
 }
 
 .parent {

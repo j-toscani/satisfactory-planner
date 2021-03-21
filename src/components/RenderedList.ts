@@ -1,22 +1,11 @@
-import { h, reactive } from 'vue';
+import { h, toRefs } from 'vue';
 
 export default {
-  setup() {
-    const state = reactive({
-      count: 0,
-    });
-
-    function increment() {
-      state.count++;
-    }
-
-    return () =>
-      h(
-        'div',
-        {
-          onClick: increment,
-        },
-        state.count,
-      );
+  name: 'RenderedList',
+  props: {
+    rows: {
+      type: Array,
+      default: [],
+    },
   },
 };
