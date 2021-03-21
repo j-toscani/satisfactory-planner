@@ -1,14 +1,24 @@
 <template>
-  <HelloWorld msg="Hello Vue 3.0 + Vite" />
+  <div class="page">
+    <header>
+      <nav></nav>
+    </header>
+    <footer>
+      <h2>Footer!</h2>
+    </footer>
+  </div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue';
-
+<script lang="ts">
 export default {
   name: 'App',
-  components: {
-    HelloWorld,
-  },
 };
 </script>
+
+<style scoped>
+header,
+footer {
+  height: 4rem;
+  background: #ddd;
+}
+</style>
