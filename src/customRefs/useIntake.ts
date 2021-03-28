@@ -1,12 +1,8 @@
 import { reactive } from 'vue';
-
-export interface Intake {
-  ammount: number;
-  name: string;
-}
+import { Product } from '../types';
 
 function useIntake() {
-  const intake: Intake = reactive({
+  const intake: Product = reactive({
     ammount: 0,
     name: '',
   });

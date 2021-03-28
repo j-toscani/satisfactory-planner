@@ -4,7 +4,6 @@
     <div class="intakes__container">
       <select
         v-if="!selected"
-        id=""
         v-model="selected"
         name="intake"
         placeholder="Number of Intakes"
@@ -16,8 +15,8 @@
       </select>
       <ul v-else>
         <li v-for="(intake, index) in dspIntakes" :key="index">
-          <input id="" v-model="intake.ammount" type="number" name="ammount" @change="updateIntakes" />
-          <input id="" v-model="intake.name" type="text" name="type" @change="updateIntakes" />
+          <input v-model="intake.ammount" type="number" name="ammount" @change="updateIntakes" />
+          <input v-model="intake.name" type="text" name="type" @change="updateIntakes" />
         </li>
       </ul>
     </div>
@@ -26,15 +25,16 @@
 
 <script lang="ts">
 import { ref } from 'vue';
+import { Product } from '../types';
 import intakeOptions from '../lib/api/intakeOptions';
-import useIntake, { Intake } from '../customRefs/Intake';
+import useIntake from '../customRefs/Intake';
 
 export default {
   name: 'Intake',
   props: {
     intakes: {
       type: Array,
-      default: [] as Intake[],
+      default: [] as Product[],
     },
   },
   setup(props, { emit }) {
@@ -57,7 +57,7 @@ export default {
     }
 
     const selected = ref(props.intakes.length);
-    const dspIntakes = ref(props.intakes as Intake[]);
+    const dspIntakes = ref(props.intakes as Product[]);
 
     return { dspIntakes, selected, resetIntake, handleIntakeSelect, updateIntakes, intakeOptions };
   },

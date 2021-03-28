@@ -1,14 +1,14 @@
 <template>
   <div>
-    {{ intakes }}
+    {{ output }}
   </div>
 </template>
 
 <script lang="ts">
 export default {
-  name: 'Intake',
+  name: 'Output',
   props: {
-    intakes: {
+    output: {
       type: Array,
       requiered: true,
     },
