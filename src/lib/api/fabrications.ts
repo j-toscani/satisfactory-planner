@@ -1,8 +1,14 @@
-import { Product } from '../../types';
+import Fabricator from '../Fabricator';
+import { reactive } from 'vue';
 
-export default [
+const steelFabricator = new Fabricator([{ name: 'steel', ammount: 60 }], [{ name: 'plates', ammount: 30 }]);
+
+const fabs = [
   {
-    name: 'No Fabrication',
-    value: (value: Product[]) => ({ output: value, efficiency: 100 }),
+    name: 'To Plates',
+    factory: steelFabricator,
+    efficiency: steelFabricator.efficiency,
   },
 ];
+
+export default fabs.map((factory) => reactive(factory));

@@ -1,6 +1,6 @@
 <template>
   <div>
-    {{ output }}
+    {{ output.factory.efficiency }}
   </div>
 </template>
 
@@ -9,7 +9,7 @@ export default {
   name: 'Output',
   props: {
     output: {
-      type: Array,
+      type: Object,
       requiered: true,
     },
   },
