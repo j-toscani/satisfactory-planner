@@ -1,7 +1,7 @@
 <template>
   <main class="container">
     <h1>Facility</h1>
-    <FactoryStep />
+    <Process />
     <!-- <div v-for="(row, index) in rows" :key="index">
       <li class="facility__row">
         <span>{{ row.name }}</span>
@@ -32,12 +32,12 @@
 
 <script lang="ts">
 import { Ref, ref, computed, ComputedRef } from 'vue';
-import FactoryStep from '../components/FactoryStep.vue';
+import Process from '../components/Process.vue';
 
 export default {
   name: 'Rows',
   components: {
-    FactoryStep,
+    Process,
   },
   setup() {
     const row = {

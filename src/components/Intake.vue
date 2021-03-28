@@ -41,6 +41,7 @@ export default {
     function resetIntake() {
       selected.value = 0;
       dspIntakes.value = [];
+      updateIntakes();
     }
 
     function handleIntakeSelect() {

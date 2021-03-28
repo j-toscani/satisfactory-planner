@@ -19,7 +19,7 @@ import { ref, computed } from 'vue';
 import fabrications from '../lib/api/fabrications';
 
 export default {
-  name: 'FactoryStep',
+  name: 'Process',
   components: {
     Intake,
     Output,

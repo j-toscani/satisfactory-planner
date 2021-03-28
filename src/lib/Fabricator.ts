@@ -8,12 +8,12 @@ function toProductObject(products: Product[]): ProductObject {
 
 export default class Fabricator {
   reqInput: ProductObject;
-  expOutput: ProductObject;
+  expOutput: Product[];
   inputs: Product[];
 
   constructor(reqInput: Product[], expOutput: Product[]) {
     this.reqInput = toProductObject(reqInput);
-    this.expOutput = toProductObject(expOutput);
+    this.expOutput = expOutput;
     this.inputs = [];
   }
 

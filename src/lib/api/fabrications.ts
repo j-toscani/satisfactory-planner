@@ -1,14 +1,23 @@
 import Fabricator from '../Fabricator';
 import { reactive } from 'vue';
 
-const steelFabricator = new Fabricator([{ name: 'steel', ammount: 60 }], [{ name: 'plates', ammount: 30 }]);
+const steelPlateFabricator = new Fabricator(
+  [{ name: 'Iron Bars', ammount: 30 }],
+  [{ name: 'Steel Plates', ammount: 30 }],
+);
+const ironFabricator = new Fabricator([{ name: 'Iron Ore', ammount: 60 }], [{ name: 'Iron Bars', ammount: 30 }]);
 
-const fabs = [
+const fabricatory = [
   {
-    name: 'To Plates',
-    factory: steelFabricator,
-    efficiency: steelFabricator.efficiency,
+    name: 'Steel Plate Constructor',
+    factory: steelPlateFabricator,
+    efficiency: steelPlateFabricator.efficiency,
+  },
+  {
+    name: 'Iron Ore Smelter',
+    factory: ironFabricator,
+    efficiency: ironFabricator.efficiency,
   },
 ];
 
-export default fabs.map((factory) => reactive(factory));
+export default fabricatory.map((factory) => reactive(factory));
