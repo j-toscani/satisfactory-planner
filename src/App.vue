@@ -4,6 +4,7 @@
       <nav>
         <router-link to="/"> Home </router-link>
         <router-link to="/render"> Render Test </router-link>
+        <router-link to="/calc"> Calculation </router-link>
       </nav>
     </header>
     <router-view></router-view>
