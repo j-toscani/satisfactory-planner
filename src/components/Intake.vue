@@ -27,7 +27,7 @@
 import { ref } from 'vue';
 import { Product } from '../types';
 import intakeOptions from '../lib/api/intakeOptions';
-import useIntake from '../customRefs/Intake';
+import useIntake from '../customRefs/useIntake';
 
 export default {
   name: 'Intake',
