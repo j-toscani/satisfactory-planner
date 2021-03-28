@@ -1,7 +1,8 @@
 <template>
   <main class="container">
     <h1>Facility</h1>
-    <div v-for="(row, index) in rows" :key="index">
+    <FactoryStep />
+    <!-- <div v-for="(row, index) in rows" :key="index">
       <li class="facility__row">
         <span>{{ row.name }}</span>
         <span class="box__container">
@@ -25,15 +26,19 @@
         </select>
       </div>
       <span></span>
-    </div>
+    </div> -->
   </main>
 </template>
 
 <script lang="ts">
 import { Ref, ref, computed, ComputedRef } from 'vue';
+import FactoryStep from '../components/FactoryStep.vue';
 
 export default {
   name: 'Rows',
+  components: {
+    FactoryStep,
+  },
   setup() {
     const row = {
       name: 'New Row',
