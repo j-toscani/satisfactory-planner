@@ -24,8 +24,6 @@
 <script lang="ts">
 import { Product as Product } from '../types';
 
-import Intake from './Intake.vue';
-import Output from './Output.vue';
 import { ref, computed, PropType } from 'vue';
 import fabrications from '../lib/api/fabrications';
 
