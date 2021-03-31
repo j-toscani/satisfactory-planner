@@ -56,7 +56,6 @@ export default class Fabricator {
 
   checkEfficiency = (productName: string) => {
     if (!this.reqInput[productName]) {
-      console.error('Required ammount unset.');
       return 0;
     }
 

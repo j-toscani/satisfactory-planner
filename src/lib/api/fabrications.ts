@@ -1,7 +1,6 @@
 import Fabricator from '../Fabricator';
-import { reactive } from 'vue';
 
-const fabricators = [
+const fabrications = [
   {
     name: 'Steel Plate Constructor',
     reqInput: [{ name: 'Iron Bars', ammount: 30 }],
@@ -14,7 +13,9 @@ const fabricators = [
   },
 ];
 
-export default fabricators.map((config) => {
-  const { name, reqInput, output } = config;
-  return reactive(new Fabricator(name, reqInput, output));
-});
+export function createFabricator(index: number) {
+  const { name, reqInput, output } = fabrications[index];
+  return new Fabricator(name, reqInput, output);
+}
+
+export default fabrications;

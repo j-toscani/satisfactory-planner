@@ -10,13 +10,13 @@
         {{ fabricator.name }}
       </option>
     </select>
-    <ul>
-      <li v-for="(output, index) in processor.output" :key="index">
+    <ul v-if="fabricator">
+      <li v-for="(output, index) in outputs" :key="index">
         {{ output.name + ': ' + output.ammount }}
       </li>
     </ul>
-    <div>
-      {{ processor.efficiency }}
+    <div v-if="fabricator">
+      {{ efficiency }}
     </div>
   </div>
 </template>
@@ -25,7 +25,7 @@
 import { Product as Product } from '../types';
 
 import { ref, computed, PropType } from 'vue';
-import fabrications from '../lib/api/fabrications';
+import fabrications, { createFabricator } from '../lib/api/fabrications';
 
 export default {
   name: 'Process',
@@ -35,24 +35,30 @@ export default {
       default: [
         {
           name: 'Iron Bars',
-          ammount: 30,
+          ammount: 25,
         },
       ],
     },
   },
   setup(props, { emit }) {
     const fabrication = ref(0);
-    const processor = computed(() => {
-      const processor = fabrications[fabrication.value];
-      processor.inputs = props.intakes;
-      emit('update', { output: processor.output, efficiency: processor.efficiency });
-      return processor;
+
+    const fabricator = computed(() => {
+      const fabricator = createFabricator(fabrication.value);
+      fabricator.inputs = props.intakes;
+      emit('update', { output: fabricator.output, efficiency: fabricator.efficiency });
+      return fabricator;
     });
+
+    const outputs = computed(() => fabricator.value.output);
+    const efficiency = computed(() => fabricator.value.efficiency);
 
     return {
       fabrication,
+      fabricator,
       fabrications,
-      processor,
+      efficiency,
+      outputs,
     };
   },
 };
